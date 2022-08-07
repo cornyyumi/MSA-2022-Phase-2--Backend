@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MSA.Phase2.Weatherman</name>
+    </assembly>
+    <members>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.getWeather(System.String)">
+            <summary>
+            This endpoint takes the name of a city, then gives you the weather details from the database
+            </summary>
+            <param name="city"></param>
+            <returns>A JSON object describing the weather details</returns>
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.addWeather(System.String)">
+            <summary>
+            This endpoint takes the name of a city, then adds the weather details to the database
+            </summary>
+            <param name="city"></param>
+            <returns>A JSON object describing the weather details</returns>
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.UpdateWeather(System.String)">
+            <summary>
+            This endpoint takes the name of a city, then updates or adds the weather details in the database
+            </summary>
+            <param name="city"></param>
+            <returns>A JSON object describing the weather details</returns>
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.deleteWeather(System.String)">
+            <summary>
+            This endpoint takes the name of a city, and deletes the weather details in the database
+            </summary>
+            <param name="city"></param>
+            <returns>A JSON object describing the weather details</returns>
+        </member>
+        <member name="T:MSA.Phase2.Weatherman.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
