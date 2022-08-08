@@ -4,6 +4,7 @@ namespace MSA.Phase2.Weatherman.Services
 {
     public class WeathermanServices
     {
+        public WeathermanServices() { }
         //Generates warning based off temperature and returns as string
         public String tempWarning(Main main)
         {
@@ -39,7 +40,7 @@ namespace MSA.Phase2.Weatherman.Services
                 return "Warning: Extremely cold weather today, encouraged to stay home or make sure to dress with multiple layers of clothing.";
             }
 
-            return "asdsadsd";
+            return null;
         }
 
         //Generates warning based off weather Id and returns as string
@@ -51,7 +52,7 @@ namespace MSA.Phase2.Weatherman.Services
             {
                 return "Warning: Thunderstorm with rain expected today, stay home if you can.";
             }
-            else if (weatherId >= 221 && weatherId <= 210)
+            else if (weatherId >= 210 && weatherId <= 221 )
             {
                 return "Warning: Thunderstorm expected today.";
             }

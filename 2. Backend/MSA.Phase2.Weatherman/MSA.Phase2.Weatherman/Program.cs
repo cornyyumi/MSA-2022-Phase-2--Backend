@@ -19,6 +19,20 @@ builder.Services.AddScoped<IWeatherRepo, DBWeatherRepo>();
 
 //Setting the database according to Environment settings
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+if (environment == "Production")
+{
+    builder.Services.AddDbContext<WeatherDbContext>(options =>
+        options.UseSqlite(builder.Configuration["DatabaseConnection"]));
+
+    builder.Services.AddSwaggerDocument(options =>
+    {
+        options.Title = "Weatherman API";
+        options.Description = "Weatherman API in Production environment";
+        options.Version = "V1";
+
+    });
+}
 if (environment == "Development")
 {
     builder.Services.AddDbContext<WeatherDbContext>(options =>
@@ -32,20 +46,6 @@ if (environment == "Development")
     });
 
 }
-if (environment == "Staging")
-{
-    builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseSqlite(builder.Configuration["DatabaseConnection"]));
-
-    builder.Services.AddSwaggerDocument(options =>
-    {
-        options.Title = "Weatherman API";
-        options.Description = "Weatherman API in Staging environment";
-        options.Version = "V1";
-
-    });
-}
-
 
 //Adding the base address for API
 builder.Services.AddHttpClient("weathermman", configureClient: client =>
@@ -56,7 +56,7 @@ builder.Services.AddHttpClient("weathermman", configureClient: client =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseOpenApi();
     app.UseSwaggerUi3();
