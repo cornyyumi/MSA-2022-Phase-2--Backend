@@ -55,8 +55,6 @@ namespace MSA.Phase2.Weatherman.Migrations
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    description = table.Column<string>(type: "TEXT", nullable: false),
-                    icon = table.Column<string>(type: "TEXT", nullable: false),
                     WeatherInfoId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

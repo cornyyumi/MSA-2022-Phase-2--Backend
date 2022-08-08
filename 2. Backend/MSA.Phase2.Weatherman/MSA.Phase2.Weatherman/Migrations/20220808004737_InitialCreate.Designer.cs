@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MSA.Phase2.Weatherman.Migrations
 {
     [DbContext(typeof(WeatherDbContext))]
-    [Migration("20220807082144_InitialCreate")]
+    [Migration("20220808004737_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -57,14 +57,6 @@ namespace MSA.Phase2.Weatherman.Migrations
 
                     b.Property<int>("WeatherInfoId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("icon")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.HasKey("id");
 

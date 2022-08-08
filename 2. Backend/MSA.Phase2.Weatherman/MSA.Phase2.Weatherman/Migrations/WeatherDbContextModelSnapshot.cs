@@ -55,14 +55,6 @@ namespace MSA.Phase2.Weatherman.Migrations
                     b.Property<int>("WeatherInfoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("icon")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("id");
 
                     b.HasIndex("WeatherInfoId");

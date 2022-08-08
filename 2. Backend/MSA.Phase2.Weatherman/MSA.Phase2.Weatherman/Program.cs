@@ -5,9 +5,6 @@ using MSA.Phase2.Weatherman.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-var connectionString = builder.Configuration.GetConnectionString("AppDb");
-
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
@@ -16,17 +13,41 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerDocument(options =>
+
+//Registering repositories
+builder.Services.AddScoped<IWeatherRepo, DBWeatherRepo>();
+
+//Setting the database according to Environment settings
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+if (environment == "Development")
 {
-    options.DocumentName = "My Amazing API";
-    options.Version = "V1";
+    builder.Services.AddDbContext<WeatherDbContext>(options =>
+        options.UseInMemoryDatabase(builder.Configuration["DatabaseConnection"]));
 
-});
+    builder.Services.AddSwaggerDocument(options =>
+    {
+        options.Title = "Weatherman API";
+        options.Description = "Weatherman API in Development environment";
+        options.Version = "V1";
+    });
 
-builder.Services.AddScoped<IWeatherRepo, DBWeatherRepo>(); 
-builder.Services.AddDbContext<WeatherDbContext>(options => options.UseSqlite("Data Source=WeatherDatabase.sqlite"));
+}
+if (environment == "Staging")
+{
+    builder.Services.AddDbContext<WeatherDbContext>(options =>
+        options.UseSqlite(builder.Configuration["DatabaseConnection"]));
+
+    builder.Services.AddSwaggerDocument(options =>
+    {
+        options.Title = "Weatherman API";
+        options.Description = "Weatherman API in Staging environment";
+        options.Version = "V1";
+
+    });
+}
 
 
+//Adding the base address for API
 builder.Services.AddHttpClient("weathermman", configureClient: client =>
 {
     client.BaseAddress = new Uri(@"https://api.openweathermap.org");
@@ -35,11 +56,12 @@ builder.Services.AddHttpClient("weathermman", configureClient: client =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
     app.UseOpenApi();
     app.UseSwaggerUi3();
 }
+
 
 app.UseHttpsRedirection();
 

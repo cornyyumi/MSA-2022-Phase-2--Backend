@@ -10,6 +10,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.0-preview.6.22329.4",
           "Microsoft.EntityFrameworkCore.Design": "7.0.0-preview.6.22329.4",
+          "Microsoft.EntityFrameworkCore.InMemory": "7.0.0-preview.6.22329.4",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.0-preview.6.22329.4",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.0-preview.6.22329.4",
           "NSwag.AspNetCore": "13.16.1",
@@ -71,6 +72,17 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.32904"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.InMemory/7.0.0-preview.6.22329.4": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.0-preview.6.22329.4"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.32904"
           }
@@ -983,6 +995,13 @@
       "sha512": "sha512-/aKUIJX2qrlaFHPJv9K1Vu+2f4EqWLmTzzbG2eiKQ0bmljJa1IB3abzDGa9ct5OmjTpdn38yfNG7VnAi2RRPIQ==",
       "path": "microsoft.entityframeworkcore.design/7.0.0-preview.6.22329.4",
       "hashPath": "microsoft.entityframeworkcore.design.7.0.0-preview.6.22329.4.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.InMemory/7.0.0-preview.6.22329.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Tn1cm3BJw48kewo4iVPF3/VWXYpFLQ5OFEDO7TbmyArTEXlK1eokO9zhXriyDoo+Gv629rF7yrdGREaAZwXVxg==",
+      "path": "microsoft.entityframeworkcore.inmemory/7.0.0-preview.6.22329.4",
+      "hashPath": "microsoft.entityframeworkcore.inmemory.7.0.0-preview.6.22329.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/7.0.0-preview.6.22329.4": {
       "type": "package",

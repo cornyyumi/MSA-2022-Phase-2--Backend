@@ -13,6 +13,19 @@ namespace MSA.Phase2.Weatherman.Data
             WeatherInfo info = dbContext.WeatherInfo.FirstOrDefault(e => e.name == city);
             return info;
         }
+
+        public Weather getWeather(WeatherInfo weatherInfo)
+        {
+            Weather weather = dbContext.Weather.FirstOrDefault(e => e.WeatherInfoId == weatherInfo.id);
+            return weather;
+        }
+        public Main getMain(WeatherInfo weatherInfo)
+        {
+            Main main = dbContext.Main.FirstOrDefault(e => e.WeatherInfoForeignKey == weatherInfo.id);
+            return main;
+
+        }
+
         public WeatherInfo add(WeatherInfo weather)
         {
             dbContext.WeatherInfo.Add(weather);

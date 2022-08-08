@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PiRCRsQcNwPgYhePQkmsvzbfH50M9AyzB2pMdnHjLuPteqnodzNoJch8VZlmfO4y+qA8MRrxJLdzfUk4Jg+Jjw==",
+  "dgSpecHash": "cGiZ8skfUAUxdxc26ar3oldQ08ie/ZaSu95+o4ImIydfeS3Ussnn9eKwFaHU/XMhJSOyw4z0vZHfWguoQNlWcw==",
   "success": true,
   "projectFilePath": "C:\\Users\\grace kim\\Desktop\\MSA 2022\\MSA-2022-Phase-2\\2. Backend\\MSA.Phase2.Weatherman\\MSA.Phase2.Weatherman\\MSA.Phase2.Weatherman.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\grace kim\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0-preview.6.22329.4\\microsoft.entityframeworkcore.abstractions.7.0.0-preview.6.22329.4.nupkg.sha512",
     "C:\\Users\\grace kim\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.0-preview.6.22329.4\\microsoft.entityframeworkcore.analyzers.7.0.0-preview.6.22329.4.nupkg.sha512",
     "C:\\Users\\grace kim\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.0-preview.6.22329.4\\microsoft.entityframeworkcore.design.7.0.0-preview.6.22329.4.nupkg.sha512",
+    "C:\\Users\\grace kim\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.0-preview.6.22329.4\\microsoft.entityframeworkcore.inmemory.7.0.0-preview.6.22329.4.nupkg.sha512",
     "C:\\Users\\grace kim\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.0-preview.6.22329.4\\microsoft.entityframeworkcore.relational.7.0.0-preview.6.22329.4.nupkg.sha512",
     "C:\\Users\\grace kim\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.0-preview.6.22329.4\\microsoft.entityframeworkcore.sqlite.7.0.0-preview.6.22329.4.nupkg.sha512",
     "C:\\Users\\grace kim\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.0-preview.6.22329.4\\microsoft.entityframeworkcore.sqlite.core.7.0.0-preview.6.22329.4.nupkg.sha512",
