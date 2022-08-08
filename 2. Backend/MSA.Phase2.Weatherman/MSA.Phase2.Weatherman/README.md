@@ -20,13 +20,15 @@ The `WeathermanController.cs` implements the endpoints with the 4 CRUD operation
 - `Delete`: Delete the existing Weather information from database by entering a city name.
 
 There are two configuration files for 'Production' and 'Development' environments.
-Having mutiple confiuration files are useful as it can easily configure the settings of our environment.
+Having mutiple confiuration files are useful as it can easily configure the settings depending on the build environment.
 
 When the application is ran in the `Production` environment, it will use the sqlite database 'WeatherDatabase.sqlite' to get, add, update, delete the data.
 
 When the application is ran in the `Development` environment, it will use the in-memory database to to get, add, update, delete the data.\
 This is espcially useful for the development stage as it has a faster access speed than a real database, and data stored in in-memory database will be reset each time the the application is started.
 
+I have setup the launch settings so if you application on Visual Studio 2022 (highly recommennded), you will be able to switch between the `Production` and `Development` environment.
+[img]
 
 ### Section Two
 
@@ -35,7 +37,11 @@ Middleware
 
 ### Section Three
 
-You will need to:
+I have used Nunit to unit test my application's service functions.
+Using middware libraries such as Nunit make the code much easy to run multiple tests by simplying the code.
+For example, by using the []
+
+[Img]
 
 * Demonstrate the use of NUnit to unit test your code.
 * Use at least one substitute to test your code.
