@@ -22,6 +22,7 @@ builder.Services.AddSwaggerDocument(options =>
     options.Version = "V1";
 
 });
+
 builder.Services.AddScoped<IWeatherRepo, DBWeatherRepo>();
 if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
 {
@@ -32,7 +33,7 @@ if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development
     builder.Services.AddDbContext<WeatherDbContext>(options => options.UseInMemoryDatabase(builder.Configuration["DataConnection"]));
 }
 
-builder.Services.AddHttpClient("weathermman", configureClient: client =>
+builder.Services.AddHttpClient("weatherman", configureClient: client =>
 {
     client.BaseAddress = new Uri(@"https://api.openweathermap.org");
 });

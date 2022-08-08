@@ -24,7 +24,7 @@ namespace MSA.Phase2.Weatherman.Controllers
             {
                 throw new ArgumentNullException(nameof(clientFactory));
             }
-            _client = clientFactory.CreateClient("weathermman");
+            _client = clientFactory.CreateClient("weatherman");
             _weatherRepo = weatherRepo;
             _service = new WeathermanServices();
             _API_key = ""; //Enter API key Here
