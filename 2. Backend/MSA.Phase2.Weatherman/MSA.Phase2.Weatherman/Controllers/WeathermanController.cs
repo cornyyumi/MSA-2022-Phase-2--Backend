@@ -15,6 +15,7 @@ namespace MSA.Phase2.Weatherman.Controllers
         private readonly HttpClient _client;
         private readonly IWeatherRepo _weatherRepo;
         private readonly WeathermanServices _service;
+        private string _API_key;
 
 
         public WeathermanController(IHttpClientFactory clientFactory, IWeatherRepo weatherRepo)
@@ -26,6 +27,7 @@ namespace MSA.Phase2.Weatherman.Controllers
             _client = clientFactory.CreateClient("weathermman");
             _weatherRepo = weatherRepo;
             _service = new WeathermanServices();
+            _API_key = ""; //Enter API key Here
         }
 
         /// <summary>
@@ -98,7 +100,7 @@ namespace MSA.Phase2.Weatherman.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> addWeather(string city)
         {
-            string url = "/data/2.5/weather?q=" + city + "&APPID=3eb4ed4db4ff2ab0947c704aabe32694";
+            string url = "/data/2.5/weather?q=" + city + "&APPID="+ _API_key;
             var response = await _client.GetAsync(url);
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -126,7 +128,7 @@ namespace MSA.Phase2.Weatherman.Controllers
             WeatherInfo info = _weatherRepo.update(city);
             if (info == null)
             {
-                string url = "/data/2.5/weather?q=" + city + "&APPID=3eb4ed4db4ff2ab0947c704aabe32694";
+                string url = "/data/2.5/weather?q=" + city + "&APPID="+_API_key;
                 var content = await _client.GetStringAsync(url);
                 WeatherInfo weather = JsonConvert.DeserializeObject<WeatherInfo>(content);
                 _weatherRepo.add(weather);

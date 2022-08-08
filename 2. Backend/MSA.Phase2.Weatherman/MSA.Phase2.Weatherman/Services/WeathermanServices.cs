@@ -1,5 +1,4 @@
 ﻿using MSA.Phase2.Weatherman.Models;
-using MSA.Phase2.Weatherman.Data;
 namespace MSA.Phase2.Weatherman.Services
 {
     public class WeathermanServices

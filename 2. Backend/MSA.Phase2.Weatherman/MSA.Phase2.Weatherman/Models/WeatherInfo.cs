@@ -4,16 +4,7 @@ namespace MSA.Phase2.Weatherman.Models
 {
     public class WeatherInfo
     {
-        public int id {
-            get { return id; }
-            set
-            {
-                if (id > 0)
-                {
-                    this.id = id;
-                }
-            }
-        }
+        public int id { get; set; }
         public string name { get; set; }
         public IEnumerable<Weather> Weather { get; set; } 
         public Main Main { get; set; }

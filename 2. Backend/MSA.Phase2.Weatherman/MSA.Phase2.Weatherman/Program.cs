@@ -5,6 +5,9 @@ using MSA.Phase2.Weatherman.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+var connectionString = builder.Configuration.GetConnectionString("AppDb");
+
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
@@ -13,41 +16,22 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerDocument(options =>
+{
+    options.DocumentName = "My Amazing API";
+    options.Version = "V1";
 
-//Registering repositories
+});
 builder.Services.AddScoped<IWeatherRepo, DBWeatherRepo>();
-
-//Setting the database according to Environment settings
-var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-if (environment == "Production")
+if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
 {
-    builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseSqlite(builder.Configuration["DatabaseConnection"]));
-
-    builder.Services.AddSwaggerDocument(options =>
-    {
-        options.Title = "Weatherman API";
-        options.Description = "Weatherman API in Production environment";
-        options.Version = "V1";
-
-    });
+    builder.Services.AddDbContext<WeatherDbContext>(options => options.UseSqlite(builder.Configuration["DataConnection"]));
 }
-if (environment == "Development")
+if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
 {
-    builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseInMemoryDatabase(builder.Configuration["DatabaseConnection"]));
-
-    builder.Services.AddSwaggerDocument(options =>
-    {
-        options.Title = "Weatherman API";
-        options.Description = "Weatherman API in Development environment";
-        options.Version = "V1";
-    });
-
+    builder.Services.AddDbContext<WeatherDbContext>(options => options.UseInMemoryDatabase(builder.Configuration["DataConnection"]));
 }
 
-//Adding the base address for API
 builder.Services.AddHttpClient("weathermman", configureClient: client =>
 {
     client.BaseAddress = new Uri(@"https://api.openweathermap.org");
@@ -61,7 +45,6 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseOpenApi();
     app.UseSwaggerUi3();
 }
-
 
 app.UseHttpsRedirection();
 

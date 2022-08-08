@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "MSA.Phase2.Weatherman": {
+    "MSA.Phase2.Weatherman-Production": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -20,7 +20,7 @@
       }
     },
 
-    "MSA.Phase2.Weatherman-2": {
+    "MSA.Phase2.Weatherman-Development": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
