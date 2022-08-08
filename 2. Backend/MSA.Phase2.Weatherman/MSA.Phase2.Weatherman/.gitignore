@@ -8,6 +8,3 @@ obj/
 #Database
 WeatherDatabase.sqlite-wal
 WeatherDatabase.sqlite-shm
-WeatherDatabase.sqlite
-
-migrations/
