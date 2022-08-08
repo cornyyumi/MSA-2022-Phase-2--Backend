@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MSA.Phase2.Weatherman</name>
+    </assembly>
+    <members>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.getWeather(System.String)">
+            <summary>
+            This endpoint takes the name of a city, then returns the weather details from the database
+            </summary>
+            <param name="city"></param>
+            <response  code="200">Success, returns A JSON object describing the weather details</response>
+            <response code="404">Information not found in database</response>
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.getTempWarning(System.String)">
+            <summary>
+            This endpoint takes the name of a city, generates then returns the temperature warnings as a string
+            </summary>
+            <param name="city"></param>
+            <response  code="200">Success, retuns String of temperature warning description</response>
+            <response code="404">Information not found in database</response>
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.getWeatherWarniing(System.String)">
+            <summary>
+            This endpoint takes the name of a city, generates then returns the weather warnings as a string
+            </summary>
+            <param name="city"></param>
+            <response  code="200">Success, returns String of weather warning description</response>
+            <response code="404">Information not found in database</response>
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.addWeather(System.String)">
+            <summary>
+            This endpoint takes the name of a city, then adds the weather details to the database
+            </summary>
+            <param name="city"></param>
+            <response  code="201">Weather information successfully created in database</response>
+            <response code="404">Information not found in OpenWeatherAPI</response>
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.UpdateWeather(System.String)">
+            <summary>
+            This endpoint takes the name of a city, then updates or adds the weather details in the database
+            </summary>
+            <param name="city"></param>
+            <response  code="200">Weather information successfully updated in database</response>
+            <response  code="201">Weather information successfully created in database</response>
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Controllers.WeathermanController.deleteWeather(System.String)">
+            <summary>
+            This endpoint takes the name of a city, and deletes the weather details in the database
+            </summary>
+            <param name="city"></param>
+            <response code="204">Sucessfully deleted</response>
+            <response code="404">Information not found in Database</response>
+        </member>
+        <member name="T:MSA.Phase2.Weatherman.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MSA.Phase2.Weatherman.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
