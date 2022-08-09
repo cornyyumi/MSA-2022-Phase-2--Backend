@@ -9,17 +9,21 @@ The user can also call the API to process the weather data and be given a warnin
 
 The `WeathermanController.cs` implements each of the endpoints with the CRUD operations (GET, POST, PUT, DELETE).
 ![Swagger endpoints](https://user-images.githubusercontent.com/51344267/183555292-f3b9c66c-8bb7-4c7d-a4c9-6c6cff47fdd1.PNG)
-**Note: Inputs are Case-Sensitive**: Please capitalize the first letter of the city name (auckland -> Auckland)
-- `GET`: Get the Json response of Weather information by entering a city name, from the database.
+**Note: Inputs are Case-Sensitive**: Please capitalize the first letter of the city name (auckland -> **Auckland**)
+- `GET /Weatherman/{city}`: Get the Json response of Weather information by entering a city name, Weather information is retrieved from database.
+- `GET /Weatherman/temp/{city}`: Get a string of temperature warnings by enterting a city name, Weather information is retrieved from database.
+- `GET /Weatherman/weather/{city}`: Get a string of temperature warnings by enterting a city name, Weather information is retrieved from database.
 
-- `Post`: Post new Weather information by entering a city name. The Weatherman API will call the OpenWeatherAPI to find the data, and add it to the database.
+- `POST /Weatherman/add/{city}`: Post new Weather information by entering a city name. The Weatherman API will call the OpenWeatherAPI to find the data, and add it to the database.
 
-- `Put`: Update Weather information of a city by entering a city name.
+- `PUT /Weatherman/update/{city}`: Update Weather information of a city by entering a city name.
 
    If the Weather information does not exist on the database, the Weatherman API will all the OpenWeatherAPI to find the data, and add it to the database.
    
-- `Delete`: Delete the existing Weather information from database by entering a city name.
+- `Delete /Weatherman/delete/{city}`: Delete the existing Weather information from database by entering a city name.
 
+
+### Configuration files
 There are two configuration files for 'Production' and 'Development' environments.
 Having mutiple confiuration files are useful as it can easily configure the settings depending on the build environment.
 
@@ -34,17 +38,18 @@ I have setup the launch settings so if you application on Visual Studio 2022 (hi
 **Note: There is currently a bug where a response isn't given when the user tries to add (POST) the weather detail of a city, and there is already a city with the same Weather id in the database**.\
 ![image](https://user-images.githubusercontent.com/51344267/183556712-f3d9977c-71ec-4335-9a0c-fe646669ba44.png)\
 Weather id of `804` is to indicate that the current weather is "Cloudy".
-For example, the user tries to add the weather for "London", and the Weather id of London is `804`. However the user will not get a response back as the weather id of "Auckland" is already in the database, with the same weather id of `804`.
+For example, the user tries to add the weather for "London", and the Weather id of London is `804`. However the user will not get a response back as the weather id of "
+" is already in the database, with the same weather id of `804`.
 
 This error is due to the error in my database not allowing duplicate sets of the same `Weather` data with the same `id` (As it is the primary key). This is definitely fixable, however due to the lack of time since submission date of Phase 2 is close, I will leave it untouched.
 If you encounter this error, **please enter a different city name to test the code.**
 
-### Section Two
+### Middleware via Dependency Injection
 
-Middleware 
-* Demonstrate an understanding of how these middleware via DI (dependency injection) simplifies your code.
-Depedency Injection simplfies the code by passing the created objects/middleware into the application code, without having to show exactly what happens when doing so.
-The registration of the services happen in the Program.cs,and then the middleware can be added by injecting
+Depedency Injection simplfies the code by passing the created objects/middleware into the application.
+The registration of the services happen in the `Program.cs`, then middleware services can be injected by depedency injection through using `builder.Services`.
+Example of configuring the middleware pipeline and HTTPClient in `Program.cs`:
+[IMG]
 
 ### Testing/Unit Testing (NUnit/Swagger)
 
