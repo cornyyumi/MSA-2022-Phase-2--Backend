@@ -7,6 +7,14 @@ This API will call the OpenWeatherAPI to get a response of the current weather a
 It will also deserailize the Json response given by the OpenWeatherAPI and  it to save it to "WeatherDatabase.sqlite".\
 The user can also call the API to process the weather data and be given a warning, if that are any concerns for the weather.
 
+## Before you run the project
+Before you run the application, please refer to the API key that was submitted along with the link to this github from MSA forms. You will be required to copy and paste that API key in order to successfully run the Weatherman API.
+When you have copied the API key, please paste it as a string into **Line 30 of `WeathermanController.cs`**:\
+![image](https://user-images.githubusercontent.com/51344267/183569801-e609c35d-fff7-4255-9af0-ebf5033926e0.png)
+
+Please make sure that you go through all the content on this readme file before running the application.
+
+## Endpoints
 The `WeathermanController.cs` implements each of the endpoints with the CRUD operations (GET, POST, PUT, DELETE).
 ![Swagger endpoints](https://user-images.githubusercontent.com/51344267/183555292-f3b9c66c-8bb7-4c7d-a4c9-6c6cff47fdd1.PNG)
 **Note: Inputs are Case-Sensitive**: Please capitalize the first letter of the city name (auckland -> **Auckland**)
@@ -41,15 +49,20 @@ Weather id of `804` is to indicate that the current weather is "Cloudy".
 For example, the user tries to add the weather for "London", and the Weather id of London is `804`. However the user will not get a response back as the weather id of "
 " is already in the database, with the same weather id of `804`.
 
-This error is due to the error in my database not allowing duplicate sets of the same `Weather` data with the same `id` (As it is the primary key). This is definitely fixable, however due to the lack of time since submission date of Phase 2 is close, I will leave it untouched.
-If you encounter this error, **please enter a different city name to test the code.**
-
+This error is due to my database not allowing duplicate sets of the same `Weather` data with the same `id` (As it is the primary key). This is definitely fixable, however due to the lack of time since submission date of Phase 2 is close, I will leave it untouched.
+If you encounter this error, **please enter a different city name to test the code.**\
+You could try: Auckland, London, Seoul... etc.
 ### Middleware via Dependency Injection
 
 Depedency Injection simplfies the code by passing the created objects/middleware into the application.
-The registration of the services happen in the `Program.cs`, then middleware services can be injected by depedency injection through using `builder.Services`.
-Example of configuring the middleware pipeline and HTTPClient in `Program.cs`:
-[IMG]
+The registration of the services happen in the `Program.cs`, the middleware services can be injected by depedency injection through using `builder.Services`.\
+Example of configuring the middleware pipeline (SwaggerUI and OpenAPI) and HTTPClient in `Program.cs`:
+![image](https://user-images.githubusercontent.com/51344267/183567024-85a2ed39-f79f-4b9d-9bc6-bd1d2daf6d6c.png)
+![image](https://user-images.githubusercontent.com/51344267/183567053-55b8acc0-2af3-4087-b751-4de7d85f1059.png)
+
+Dependency Injection is also used for my controller class, where the client and the weather repository is injected from `Program.cs` to `WeathermanController.cs`:
+![image](https://user-images.githubusercontent.com/51344267/183569298-a1882fec-1d53-47ce-912f-32c4eb3452da.png)
+
 
 ### Testing/Unit Testing (NUnit/Swagger)
 
