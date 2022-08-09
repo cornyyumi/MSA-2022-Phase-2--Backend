@@ -27,7 +27,7 @@ When the application is ran in the `Production` environment, it will use the sql
 When the application is ran in the `Development` environment, it will use the in-memory database to to get, add, update, delete the data.\
 This is espcially useful for the development stage as it has a faster access speed than a real database, and data stored in in-memory database will be reset each time the the application is started.
 
-I have setup the launch settings so if you application on Visual Studio 2022 (highly recommennded), you will be able to switch between the `Production` and `Development` environment.
+I have setup the launch settings so if you application on Visual Studio 2022 (highly recommennded), you will be able to switch between the `Production` and `Development` environment if you follow the screenshot below.
 [img]
 
 ### Section Two
@@ -37,12 +37,12 @@ Middleware
 
 ### Section Three
 
-I have used Nunit to unit test my application's service functions.
-Using middware libraries such as Nunit make the code much easy to run multiple tests by simplying the code.
-For example, by using the []
+I demonstrated the use of NUnit for my applications unit testing, you will be able to run these tests and see them pass the test cases.
+Using NUnit for unit testing was espcially useful for making multiple test cases for my functions, as it helped me to reduce the code duplication.
+[IMG]
+As seen in the image, I was able to use the [TestCases] annotation to assign multiple variables to substitute in for testing, instead of having repeated code.
+This helps the code to be much cleaner, and readable for testing.
 
-[Img]
-
-* Demonstrate the use of NUnit to unit test your code.
-* Use at least one substitute to test your code.
-* Demonstrate an understanding of why the middleware libraries made your code easier to test.
+Aside from using the NUnit library for testing, the Swagger (NSwag) made the code easier to test.
+Configuring my application with the  OpenAPI specification generator and Swagger UI middleware allows API documentation and enables the user to call the API directly onto the localhost browser. So I could easily test if my endpoints for the CRUD operations were receiving the correct response from the OpenWeatherAPI, and check if my API is inputting the correct data into the SQLite database.
+emonstrate an understanding of why the middleware libraries made your code easier to test.
