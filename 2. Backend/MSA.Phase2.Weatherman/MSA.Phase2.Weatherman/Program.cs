@@ -16,20 +16,29 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerDocument(options =>
-{
-    options.DocumentName = "My Amazing API";
-    options.Version = "V1";
 
-});
 
 builder.Services.AddScoped<IWeatherRepo, DBWeatherRepo>();
 if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
 {
+    builder.Services.AddSwaggerDocument(options =>
+    {
+        options.DocumentName = "Weatherman API";
+        options.Version = "V1";
+        options.Description = "Running Production build (SQLite database)";
+
+    });
     builder.Services.AddDbContext<WeatherDbContext>(options => options.UseSqlite(builder.Configuration["DataConnection"]));
 }
 if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
 {
+    builder.Services.AddSwaggerDocument(options =>
+    {
+        options.DocumentName = "Weatherman API";
+        options.Version = "V1";
+        options.Description = "Running Development build (In-Memory database)";
+
+    });
     builder.Services.AddDbContext<WeatherDbContext>(options => options.UseInMemoryDatabase(builder.Configuration["DataConnection"]));
 }
 
