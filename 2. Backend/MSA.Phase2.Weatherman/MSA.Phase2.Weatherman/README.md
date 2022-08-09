@@ -33,6 +33,7 @@ I have setup the launch settings so if you application on Visual Studio 2022 (hi
 
 **Note: There is currently a bug where a response isn't given when the user tries to add (POST) the weather detail of a city, and there is already a city with the same Weather id in the database**.\
 ![image](https://user-images.githubusercontent.com/51344267/183556712-f3d9977c-71ec-4335-9a0c-fe646669ba44.png)\
+Weather id of `804` is to indicate that the current weather is "Cloudy".
 For example, the user tries to add the weather for "London", and the Weather id of London is `804`. However the user will not get a response back as the weather id of "Auckland" is already in the database, with the same weather id of `804`.
 
 This error is due to the error in my database not allowing duplicate sets of the same `Weather` data with the same `id` (As it is the primary key). This is definitely fixable, however due to the lack of time since submission date of Phase 2 is close, I will leave it untouched.
@@ -42,6 +43,8 @@ If you encounter this error, **please enter a different city name to test the co
 
 Middleware 
 * Demonstrate an understanding of how these middleware via DI (dependency injection) simplifies your code.
+Depedency Injection simplfies the code by passing the created objects/middleware into the application code, without having to show exactly what happens when doing so.
+The registration of the services happen in the Program.cs,and then the middleware can be added by injecting
 
 ### Testing/Unit Testing (NUnit/Swagger)
 
